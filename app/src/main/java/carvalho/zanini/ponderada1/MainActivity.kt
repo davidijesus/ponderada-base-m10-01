@@ -64,7 +64,7 @@ fun LancadorDeDadosApp() {
         Button(
             onClick = {
                 val valorSorteado = when (dadoSelecionado) {
-                    "D6" -> Random.nextInt(6)
+                    "D6" -> Random.nextInt(1,7)
                     else -> 0
                 }
 
