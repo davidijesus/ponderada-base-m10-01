@@ -13,6 +13,7 @@ A atividade consistia em identificar um bug em um projeto Android base e evoluir
 2. [Diagnóstico e correção do bug](#seção-2--diagnóstico-e-correção-do-bug)
 3. [Implementação dos novos tipos de dados](#seção-3--implementação-dos-novos-tipos-de-dados)
 4. [Diferencial visual com tema Pokémon](#seção-4--diferencial-visual-com-tema-pokémon)
+5. [Dificuldades encontradas](#seção-5--dificuldades-encontradas)
 ---
  
 ## Seção 1 — Preparação do ambiente de desenvolvimento
@@ -83,5 +84,13 @@ Um estado nullable controla qual imagem aparece na tela:
 ```kotlin
 var imagemDoDado by remember { mutableStateOf<Int?>(null) }
 ```
+
+## Seção 5 — Dificuldades encontradas
+
+A principal dificuldade durante o desenvolvimento aconteceu na etapa de conversão e configuração das imagens utilizadas no tema Pokémon. Como os arquivos originais estavam em SVG, foi necessário adaptá-los para um formato compatível com o sistema de recursos do Android.
+
+Durante esse processo, alguns arquivos XML de configuração dos ícones adaptativos acabaram sendo modificados incorretamente, especialmente dentro da pasta mipmap-anydpi-v26. Isso gerou erros de compilação relacionados ao parsing de XML e ao gerenciamento de recursos do Android.
+
+O problema exigiu uma investigação mais cuidadosa sobre a estrutura correta dos arquivos de drawable e mipmap, além da diferença entre recursos visuais comuns e adaptive icons. Depois de identificar os arquivos alterados incorretamente, os XMLs foram reorganizados e os recursos passaram a funcionar normalmente.
  
 > 💡 Quando o dado selecionado não é o D6, o valor permanece `null` e nenhuma imagem é renderizada — evitando qualquer exibição indevida para os outros tipos de dado.
